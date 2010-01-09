@@ -9,6 +9,7 @@ namespace InvestmentStrategies
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
