@@ -48,7 +48,7 @@ namespace AlgorytmyEwolucyjne1
         {
 
             int bestYetResult = 0;
-            int[] bestYetVector;// = new List<int>().ToArray();
+            int[] bestYetVector;
 
             double[] p = InitialProbabilityVector(vectorLength);
             int[] x1 = RandomIndividual(p);
