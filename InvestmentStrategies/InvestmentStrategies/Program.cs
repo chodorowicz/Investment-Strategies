@@ -9,6 +9,8 @@ namespace InvestmentStrategies
     {
         static void Main(string[] args)
         {
+            Indicators indicators = new Indicators();
+            indicators.readData("dummy");
 
         }
     }

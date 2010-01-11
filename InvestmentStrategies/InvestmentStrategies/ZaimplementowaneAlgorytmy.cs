@@ -6,15 +6,15 @@ using System.IO;
 
 namespace AlgorytmyEwolucyjne1
 {
-    struct Osobnik
-    {
-        private int[] _chromosome;
-        private int _result;
-        public Osobnik(int n)
-        {
-            _chromosome = new int[n];        
-        }
-    }
+    //struct Osobnik
+    //{
+    //    private int[] _chromosome;
+    //    private int _result;
+    //    public Osobnik(int n)
+    //    {
+    //        _chromosome = new int[n];        
+    //    }
+    //}
     class ZaimplementowaneAlgorytmy
     {
         public delegate int targetFunctionDelegate(int[] chromosome);
