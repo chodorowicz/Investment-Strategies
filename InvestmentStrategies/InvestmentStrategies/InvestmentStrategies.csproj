@@ -48,6 +48,7 @@
     <Compile Include="BOA.cs" />
     <Compile Include="CGA.cs" />
     <Compile Include="ECGA.cs" />
+    <Compile Include="Graph.cs" />
     <Compile Include="Indicators.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
