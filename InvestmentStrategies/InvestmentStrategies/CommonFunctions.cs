@@ -42,20 +42,7 @@ namespace InvestmentStrategies
         {
             return (r.NextDouble() < p) ? 1 : 0;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static int[] RandomIndividual(double[] p)
-        {
-            int[] x = new int[p.Length];
-
-            for (int k = 0; k < p.Length; k++)
-                x[k] = BinaryRandom(p[k]);
-
-            return x;
-        }
+        
         /// <summary>
         /// 
         /// </summary>
@@ -70,8 +57,8 @@ namespace InvestmentStrategies
             int[] bestYetVector;
 
             double[] p = InitialProbabilityVector(vectorLength);
-            int[] x1 = RandomIndividual(p);
-            int[] x2 = RandomIndividual(p);
+            int[] x1 = Population.RandomIndividual(p);
+            int[] x2 = Population.RandomIndividual(p);
 
             int x1Result = F(x1);
             int x2Result = F(x2);
@@ -103,8 +90,8 @@ namespace InvestmentStrategies
                             p[k] -= theta;
                     }
 
-                    x1 = RandomIndividual(p);
-                    x2 = RandomIndividual(p);
+                    x1 = Population.RandomIndividual(p);
+                    x2 = Population.RandomIndividual(p);
 
                     x1Result = F(x1);
                     x2Result = F(x2);
@@ -124,7 +111,7 @@ namespace InvestmentStrategies
             int[] results = new int[populationCount];
             for (int i = 0; i < populationCount; i++)
             {
-                population[i] = RandomIndividual(p);
+                population[i] = Population.RandomIndividual(p);
                 results[i] = F(population[i]);
             }
 
