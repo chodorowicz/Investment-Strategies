@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace InvestmentStrategies
 {
-    class Indicators
+    public class Indicators
     {
         public List<Dictionary<string, float>> stockData;
 
@@ -16,7 +16,7 @@ namespace InvestmentStrategies
             List<Dictionary<string, float>> results = new List<Dictionary<string, float>>();
             int numRows = 300;
 
-            using (StreamReader objReader = new StreamReader("../../stock-data/BZWBK.txt"))
+            using (StreamReader objReader = new StreamReader(path))
             {
                 string strLineText;
                 objReader.ReadLine(); // omitting first line with table headers
@@ -74,7 +74,6 @@ namespace InvestmentStrategies
                 valueChange = this.stockData[i]["close"] - this.stockData[i - 1]["close"];
                 if (valueChange > 0)
                 {
-                    // wzrost wartości
                     totalGain += valueChange;
                 }
                 else
