@@ -45,14 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOA.cs" />
+    <Compile Include="BOA\BayesianNetwork.cs" />
+    <Compile Include="BOA\BOA.cs" />
+    <Compile Include="Population.cs" />
     <Compile Include="CGA.cs" />
     <Compile Include="ECGA.cs" />
+    <Compile Include="Graph.cs" />
     <Compile Include="Indicators.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SGA.cs" />
-    <Compile Include="ZaimplementowaneAlgorytmy.cs" />
+    <Compile Include="CommonFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="stock-data\BZWBK.txt" />

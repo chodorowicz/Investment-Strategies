@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace AlgorytmyEwolucyjne1
+namespace InvestmentStrategies
 {
     //struct Osobnik
     //{
@@ -15,12 +15,17 @@ namespace AlgorytmyEwolucyjne1
     //        _chromosome = new int[n];        
     //    }
     //}
-    class ZaimplementowaneAlgorytmy
+
+    public class CommonFunctions
     {
         public delegate int targetFunctionDelegate(int[] chromosome);
         static Random r = new Random();
-
-        static double[] InitialProbabilityVector(int d)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public static double[] InitialProbabilityVector(int d)
         {
             double[] p = new double[d];
             for (int k = 0; k < d; k++)
@@ -28,22 +33,23 @@ namespace AlgorytmyEwolucyjne1
 
             return p;
         }
-
-        static int BinaryRandom(double p)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static int BinaryRandom(double p)
         {
             return (r.NextDouble() < p) ? 1 : 0;
         }
-
-        static int[] RandomIndividual(double[] p)
-        {
-            int[] x = new int[p.Length];
-
-            for (int k = 0; k < p.Length; k++)
-                x[k] = BinaryRandom(p[k]);
-
-            return x;
-        }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="F"></param>
+        /// <param name="theta"></param>
+        /// <param name="vectorLength"></param>
+        /// <param name="iterationNumber"></param>
         public static void CompactGeneticAlgorithm(targetFunctionDelegate F, double theta, int vectorLength, int iterationNumber)
         {
 
@@ -51,8 +57,8 @@ namespace AlgorytmyEwolucyjne1
             int[] bestYetVector;
 
             double[] p = InitialProbabilityVector(vectorLength);
-            int[] x1 = RandomIndividual(p);
-            int[] x2 = RandomIndividual(p);
+            int[] x1 = Population.RandomIndividual(p);
+            int[] x2 = Population.RandomIndividual(p);
 
             int x1Result = F(x1);
             int x2Result = F(x2);
@@ -84,15 +90,20 @@ namespace AlgorytmyEwolucyjne1
                             p[k] -= theta;
                     }
 
-                    x1 = RandomIndividual(p);
-                    x2 = RandomIndividual(p);
+                    x1 = Population.RandomIndividual(p);
+                    x2 = Population.RandomIndividual(p);
 
                     x1Result = F(x1);
                     x2Result = F(x2);
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="F"></param>
+        /// <param name="populationCount"></param>
+        /// <param name="M"></param>
         public static void SimpleGeneticAlgorithm(targetFunctionDelegate F, int populationCount, int M)
         {
             double[] p = InitialProbabilityVector(populationCount);
@@ -100,7 +111,7 @@ namespace AlgorytmyEwolucyjne1
             int[] results = new int[populationCount];
             for (int i = 0; i < populationCount; i++)
             {
-                population[i] = RandomIndividual(p);
+                population[i] = Population.RandomIndividual(p);
                 results[i] = F(population[i]);
             }
 
@@ -112,6 +123,8 @@ namespace AlgorytmyEwolucyjne1
         
         }
 
+
+#warning Zaimplementować te funkcje
         private static void UniformCrossover(int[][] population)
         {
             throw new NotImplementedException();

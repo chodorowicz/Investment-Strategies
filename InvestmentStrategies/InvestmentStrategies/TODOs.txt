@@ -1,0 +1,17 @@
+﻿1. Napisać funkcję celu. Potrzebne jest ocenianie osobnika, żeby móc robić selekcję
+	Dla danego osobnika trzeba umieć:
+		Policzyć co zrobić z akcjami na podstawie bitów ustawionych w chromosomie
+		Jak już wiemy co zrobić (kupić/zostawić/sprzedać), to w jaki sposób oszacować "zysk", żeby porównywać go z innymi osobnikami?
+		Dla każdego możemy wiedzieć, że zamknięcie będzie z ustaloną kwotą, więc jeśli 
+			kupiliśmy i 
+				cena wzrosła, to policzymy zysk
+				cena spadła, to policzymy strata (ujemny zysk)
+				cena bez zmian, to policzymy zerowy zysk
+			sprzedaliśmy i
+				cena wzrosła, to policzymy straty (ujemny zysk)
+				cena spadła, to policzymy zysk
+				cena bez zmian, to policzymy zerowy zysk
+			zostawiliśmy i
+				cena wzrosła, to policzymy straty (ujemny zysk)
+				cena spadła, to policzymy straty (ujemny zysk)
+				cena bez zmian, to policzymy zerowy zysk
