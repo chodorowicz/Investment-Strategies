@@ -9,8 +9,7 @@ namespace InvestmentStrategies
     {
         static void Main(string[] args)
         {
-            boa.BayesianOptimisationAlgorithm();
- boa.BayesianOptimisationAlgorithm();
+            
              Indicators indicators = new Indicators();
             indicators.readData("dummy");
             //indicators.testReadData(1);
