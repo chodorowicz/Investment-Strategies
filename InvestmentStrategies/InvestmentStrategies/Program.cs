@@ -11,6 +11,9 @@ namespace InvestmentStrategies
         {
             Indicators indicators = new Indicators();
             indicators.readData("dummy");
+            //indicators.testReadData(1);
+            indicators.indRSI(30);
+            
 
         }
     }

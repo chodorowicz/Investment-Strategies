@@ -4,3 +4,5 @@ E:\_projects\_ 2010\ewolucyjne\investment-strategies\InvestmentStrategies\Invest
 E:\_projects\_ 2010\ewolucyjne\investment-strategies\InvestmentStrategies\InvestmentStrategies\bin\Debug\InvestmentStrategies.pdb
 E:\_projects\_ 2010\ewolucyjne\investment-strategies\InvestmentStrategies\InvestmentStrategies\obj\Debug\InvestmentStrategies.exe
 E:\_projects\_ 2010\ewolucyjne\investment-strategies\InvestmentStrategies\InvestmentStrategies\obj\Debug\InvestmentStrategies.pdb
+E:\_projects\_2010\ewolucyjne\investment-strategies\InvestmentStrategies\InvestmentStrategies\obj\Debug\InvestmentStrategies.exe
+E:\_projects\_2010\ewolucyjne\investment-strategies\InvestmentStrategies\InvestmentStrategies\obj\Debug\InvestmentStrategies.pdb
