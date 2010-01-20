@@ -13,7 +13,7 @@ namespace InvestmentStrategies
             Indicators indicators = new Indicators();
             indicators.readData("../../data-stock/BZWBK.txt");
             //indicators.testReadData(1);
-            indicators.indRSI(30);
+            RSI rsi = new RSI(indicators, 30);
             
 
         }

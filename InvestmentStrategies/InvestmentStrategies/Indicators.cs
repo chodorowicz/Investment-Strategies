@@ -8,12 +8,13 @@ namespace InvestmentStrategies
 {
     public class Indicators
     {
-        public List<Dictionary<string, float>> stockData;
+        public List<Dictionary<string, double>> stockData;
+        public List<Dictionary<string, List<double>>> ind;
 
         public void readData(string path)
         {
             CultureInfo Invc = CultureInfo.InvariantCulture;
-            List<Dictionary<string, float>> results = new List<Dictionary<string, float>>();
+            List<Dictionary<string, double>> results = new List<Dictionary<string, double>>();
             int numRows = 300;
 
             using (StreamReader objReader = new StreamReader(path))
@@ -25,15 +26,15 @@ namespace InvestmentStrategies
                 while ( ((strLineText = objReader.ReadLine()) != null) && (i <= numRows))
                 {
                     String[] tempStrings = strLineText.Split(',');
-                    float[] floatsArray = new float[5];
-                    Dictionary<string, float> dict = new Dictionary<string, float>();
+                    double[] doublesArray = new double[5];
+                    Dictionary<string, double> dict = new Dictionary<string, double>();
 
-                    //dict.Add("date",   float.Parse(tempStrings[1], Invc));
-                    dict.Add("open",   float.Parse(tempStrings[2], Invc));
-                    dict.Add("high",   float.Parse(tempStrings[3], Invc));
-                    dict.Add("low",    float.Parse(tempStrings[4], Invc));
-                    dict.Add("close",  float.Parse(tempStrings[5], Invc));
-                    dict.Add("volume", float.Parse(tempStrings[6], Invc));
+                    //dict.Add("date",   double.Parse(tempStrings[1], Invc));
+                    dict.Add("open",   double.Parse(tempStrings[2], Invc));
+                    dict.Add("high",   double.Parse(tempStrings[3], Invc));
+                    dict.Add("low",    double.Parse(tempStrings[4], Invc));
+                    dict.Add("close",  double.Parse(tempStrings[5], Invc));
+                    dict.Add("volume", double.Parse(tempStrings[6], Invc));
 
                     results.Add(dict);
                     i++;
@@ -41,6 +42,12 @@ namespace InvestmentStrategies
             }
  
             this.stockData = results;
+        }
+
+        public double valueChange_Close(int day)
+        {
+            double valueChange = this.stockData[day]["close"] - this.stockData[day - 1]["close"];
+            return valueChange;
         }
 
         public void testReadData(int row)
@@ -54,46 +61,6 @@ namespace InvestmentStrategies
             Console.ReadLine();
         }
 
-        public void indRSI(int days)
-        {
-            // Relative Strength Index
-            int firstPeriod = 30;
-            float valueChange;
-            float totalGain = 0;
-            float totalLoss = 0;
-            int daysCount = 0;
-            float[] avgGains = new float[this.stockData.Count];
-            float[] avgLoses = new float[this.stockData.Count];
-
-            if (days > 30)
-            {
-                days = 30;
-            }
-            for (int i = 1; i <= firstPeriod; i++)
-            {
-                valueChange = this.stockData[i]["close"] - this.stockData[i - 1]["close"];
-                if (valueChange > 0)
-                {
-                    totalGain += valueChange;
-                }
-                else
-                {
-                    totalLoss += -valueChange;
-                }
-                //this.stockData[]
-                Console.WriteLine("{0}, {1}, {2}", valueChange, totalGain, totalLoss);
-                daysCount++;
-            }
-            avgGains[daysCount] = totalGain / daysCount;
-            avgLoses[daysCount] = totalLoss / daysCount;
-            Console.WriteLine("Gains {0}", avgGains[daysCount]);
-            Console.WriteLine("Loses {0}", avgLoses[daysCount]);
-            Console.WriteLine(daysCount);
-
-
-
-            Console.ReadLine();
-
-        }
+      
     }
 }

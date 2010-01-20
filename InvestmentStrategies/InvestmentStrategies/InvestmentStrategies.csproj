@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="BOA\BayesianNetwork.cs" />
     <Compile Include="BOA\BOA.cs" />
+    <Compile Include="Indicators\RSI.cs" />
     <Compile Include="Population.cs" />
     <Compile Include="CGA.cs" />
     <Compile Include="ECGA.cs" />
