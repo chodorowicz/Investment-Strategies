@@ -15,3 +15,6 @@
 				cena wzrosła, to policzymy straty (ujemny zysk)
 				cena spadła, to policzymy straty (ujemny zysk)
 				cena bez zmian, to policzymy zerowy zysk
+				
+2. Zrobić generowanie nowych osobników na podstawie wyników sieci
+	Liczenie prawdopodobieństw osobników

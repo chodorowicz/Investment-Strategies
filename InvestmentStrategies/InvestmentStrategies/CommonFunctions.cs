@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using InvestmentStrategies.BOA;
 
 namespace InvestmentStrategies
 {
@@ -19,7 +20,7 @@ namespace InvestmentStrategies
     public class CommonFunctions
     {
         public delegate int targetFunctionDelegate(int[] chromosome);
-        static Random r = new Random();
+        
         /// <summary>
         /// 
         /// </summary>
@@ -33,15 +34,7 @@ namespace InvestmentStrategies
 
             return p;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static int BinaryRandom(double p)
-        {
-            return (r.NextDouble() < p) ? 1 : 0;
-        }
+        
         
         /// <summary>
         /// 

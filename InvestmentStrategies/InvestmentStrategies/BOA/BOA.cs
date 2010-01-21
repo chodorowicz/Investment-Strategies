@@ -35,11 +35,21 @@ namespace InvestmentStrategies.BOA
             int iteration = 0;
             //Generujemy losową populację
             int[][] population = Population.CreateRandomPopulation(this.populationSize, this.chromosomeLength);
-            //Obliczamy dla niej prawdopodobieństwa (wektor prawdopodobieństw dla zmiennych z sieci Bayesowskiej
-            BayesianNetwork network = new BayesianNetwork();
-            double[] probabilities = network.EvaluatePopulationProbabilities(population);
-            network.CreateNetwork(population, probabilities);
+            int[][] parents;
+            
+            //Robimy selekcję na podstawie funkcji celu, podając ilu rodziców chcemy uzyskać do nowej populacji
+            //może to być parametr programu, póki co wpisałem statycznie wartość
+#warning Tu nie powinno być stałej wartości,
+            Population.Selection(out parents, population, 5);
 
+            //Obliczamy dla wybranych prawdopodobieństwa (wektor prawdopodobieństw dla zmiennych z sieci Bayesowskiej)
+            BayesianNetwork network = new BayesianNetwork();
+            double[] probabilities = network.EvaluatePopulationProbabilities(parents);
+
+            network.CreateNetwork(parents, probabilities);
+            network.TestTheAlgorithms(parents.Length);
+            
+            network.NetworkGrow();
             return population[0];
         }
 

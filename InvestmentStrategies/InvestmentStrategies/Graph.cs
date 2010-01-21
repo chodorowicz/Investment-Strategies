@@ -81,6 +81,7 @@ namespace InvestmentStrategies
         public void AddDirectedEdge(GraphNode<T> from, GraphNode<T> to, int cost)
         {
             from.Neighbors.Add(to);
+            to.Parents.Add(from);
             from.Costs.Add(cost);
         }
 
@@ -94,59 +95,10 @@ namespace InvestmentStrategies
         public void AddDirectedEdge(T from, T to, int cost)
         {
             ((GraphNode<T>)nodeSet.FindByValue(from)).Neighbors.Add(nodeSet.FindByValue(to));
+            ((GraphNode<T>)nodeSet.FindByValue(to)).Parents.Add(nodeSet.FindByValue(from));
             ((GraphNode<T>)nodeSet.FindByValue(from)).Costs.Add(cost);
         }
 
-        /// <summary>
-        /// Adds an undirected edge from a GraphNode with one value (from) to a GraphNode with another value (to).
-        /// </summary>
-        /// <param name="from">The value of one of the GraphNodes that is joined by the edge.</param>
-        /// <param name="to">The value of one of the GraphNodes that is joined by the edge.</param>
-        public void AddUndirectedEdge(T from, T to)
-        {
-            AddUndirectedEdge(from, to, 0);
-        }
-
-        /// <summary>
-        /// Adds an undirected edge from one GraphNode to another.
-        /// </summary>
-        /// <param name="from">One of the GraphNodes that is joined by the edge.</param>
-        /// <param name="to">One of the GraphNodes that is joined by the edge.</param>
-        public void AddUndirectedEdge(GraphNode<T> from, GraphNode<T> to)
-        {
-            AddUndirectedEdge(from, to, 0);
-        }
-
-        /// <summary>
-        /// Adds an undirected edge from one GraphNode to another with an associated cost.
-        /// </summary>
-        /// <param name="from">One of the GraphNodes that is joined by the edge.</param>
-        /// <param name="to">One of the GraphNodes that is joined by the edge.</param>
-        /// <param name="cost">The cost of the undirected edge.</param>
-        public void AddUndirectedEdge(GraphNode<T> from, GraphNode<T> to, int cost)
-        {
-            from.Neighbors.Add(to);
-            from.Costs.Add(cost);
-
-            to.Neighbors.Add(from);
-            to.Costs.Add(cost);
-        }
-
-        /// <summary>
-        /// Adds an undirected edge from a GraphNode with one value (from) to a GraphNode with another value (to)
-        /// with an associated cost.
-        /// </summary>
-        /// <param name="from">The value of one of the GraphNodes that is joined by the edge.</param>
-        /// <param name="to">The value of one of the GraphNodes that is joined by the edge.</param>
-        /// <param name="cost">The cost of the undirected edge.</param>
-        public void AddUndirectedEdge(T from, T to, int cost)
-        {
-            ((GraphNode<T>)nodeSet.FindByValue(from)).Neighbors.Add(nodeSet.FindByValue(to));
-            ((GraphNode<T>)nodeSet.FindByValue(from)).Costs.Add(cost);
-
-            ((GraphNode<T>)nodeSet.FindByValue(to)).Neighbors.Add(nodeSet.FindByValue(from));
-            ((GraphNode<T>)nodeSet.FindByValue(to)).Costs.Add(cost);
-        }
         #endregion
         #endregion
 
@@ -173,6 +125,7 @@ namespace InvestmentStrategies
         #endregion
 
         #region Remove
+        #region RemoveNode
         /// <summary>
         /// Attempts to remove a node from a graph.
         /// </summary>
@@ -202,10 +155,50 @@ namespace InvestmentStrategies
                     gnode.Neighbors.RemoveAt(index);
                     gnode.Costs.RemoveAt(index);
                 }
+                index = gnode.Parents.IndexOf(nodeToRemove);
+                if (index != -1)
+                { 
+                    //remove the reference from the node
+                    gnode.Parents.RemoveAt(index);
+                }
             }
 
             return true;
         }
+        #endregion
+        #region Remove*Edge Methods
+
+        /// <summary>
+        /// Removes a directed edge from one GraphNode (from) to another (to) with an associated cost.
+        /// </summary>
+        /// <param name="from">The GraphNode from which the directed edge eminates.</param>
+        /// <param name="to">The GraphNode to which the edge leads.</param>
+        internal void RemoveDirectedEdge(GraphNode<T> from, GraphNode<T> to)
+        {
+            int index = from.Neighbors.IndexOf(to);
+            from.Neighbors.RemoveAt(index);
+            from.Costs.RemoveAt(index);
+            to.Parents.Remove(from);
+            
+        }
+
+        /// <summary>
+        /// Removes a directed edge from a GraphNode with one value (from) to a GraphNode with another value (to)
+        /// with an associated cost.
+        /// </summary>
+        /// <param name="from">The value of the GraphNode from which the directed edge eminates.</param>
+        /// <param name="to">The value of the GraphNode to which the edge leads.</param>
+        public void RemoveDirectedEdge(T from, T to)
+        {
+            GraphNode<T> first = (GraphNode<T>)nodeSet.FindByValue(from);
+            GraphNode<T> second = (GraphNode<T>)nodeSet.FindByValue(to);
+            int index = first.Neighbors.IndexOf(second);
+            first.Neighbors.RemoveAt(index);
+            first.Costs.RemoveAt(index);
+            second.Parents.Remove(first);
+        }
+
+        #endregion
         #endregion
 
         #region IEnumerable<T> Members
@@ -248,6 +241,7 @@ namespace InvestmentStrategies
         }
 
         #endregion
+
     }
 
 
@@ -265,7 +259,9 @@ namespace InvestmentStrategies
         #region Constructors
         public GraphNode() : base() { }
         public GraphNode(T value) : base(value) { }
+        public GraphNode(T value, double probability) : base(value, probability) { }
         public GraphNode(T value, NodeList<T> neighbors) : base(value, neighbors) { }
+        public GraphNode(T value, double probability, NodeList<T> neighbors) : base(value, probability, neighbors) { }
         #endregion
 
         #region Properties
@@ -280,6 +276,20 @@ namespace InvestmentStrategies
                     base.Neighbors = new NodeList<T>();
 
                 return base.Neighbors;
+            }
+        }
+
+        /// <summary>
+        /// Returns the set of parents for this graph node.
+        /// </summary>
+        new public NodeList<T> Parents
+        {
+            get
+            {
+                if (base.Parents == null)
+                    base.Parents = new NodeList<T>();
+
+                return base.Parents;
             }
         }
 
@@ -351,19 +361,29 @@ namespace InvestmentStrategies
         #region Private Members
         private T data;
         private NodeList<T> neighbors = null;
+        private NodeList<T> parents = null;
         #endregion
 
         #region Constructors
         public Node() { }
-        public Node(T data) : this(data, null) { }
-        public Node(T data, NodeList<T> neighbors)
+        public Node(T data) : this(data, 0.0, null) { }
+        public Node(T data, double probability) : this(data, probability, null) { }
+        public Node(T data, NodeList<T> neighbors) : this(data, -1.0, neighbors) { }        
+        public Node(T data, double probability, NodeList<T> neighbors)
         {
             this.data = data;
+            this.Probability = Probability;
             this.neighbors = neighbors;
         }
         #endregion
 
         #region Properties
+        public double Probability
+        {
+            get;
+            set;
+        }
+
         public T Value
         {
             get
@@ -373,6 +393,18 @@ namespace InvestmentStrategies
             set
             {
                 data = value;
+            }
+        }
+
+        protected NodeList<T> Parents
+        {
+            get
+            {
+                return parents;
+            }
+            set
+            {
+                this.parents = value;
             }
         }
 
@@ -387,6 +419,7 @@ namespace InvestmentStrategies
                 neighbors = value;
             }
         }
+
         #endregion
     }
 }

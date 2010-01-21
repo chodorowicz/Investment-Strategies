@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using InvestmentStrategies.BOA;
 
 namespace InvestmentStrategies
 {
@@ -34,9 +35,41 @@ namespace InvestmentStrategies
             int[] x = new int[p.Length];
 
             for (int k = 0; k < p.Length; k++)
-                x[k] = CommonFunctions.BinaryRandom(p[k]);
+                x[k] = Randoms.Instance.BinaryRandom(p[k]);
 
             return x;
+        }
+
+        /// <summary>
+        /// Performs Selection by tournament mode
+        /// </summary>
+        /// <param name="parents">Selected parents individuals</param>
+        /// <param name="population">Population to select parents from</param>
+        /// <param name="howMany">How many should we pick</param>
+        internal static void Selection(out int[][] parents, int[][] population, int howMany)
+        {
+            ObjectiveFunction objective = new ObjectiveFunction();
+            double maxResult = Double.MinValue;
+            int maxIndividual = Int32.MinValue;
+
+            double tempResult;
+            int tempIndividual;
+            
+            parents = new int[howMany][];
+            for(int i = 0; i < parents.Length; i++)
+                parents[i] = new int[population[i].Length];
+
+            for (int i = 0; i < howMany; i++)
+            {
+                tempIndividual = Randoms.Instance.RandIntMax(population.Length);
+                tempResult = objective.CountPerformanceRatio(population[tempIndividual]);
+                if (tempResult > maxResult)
+                {                    
+                    maxResult = tempResult;
+                    maxIndividual = tempIndividual; // po co mi to?
+                }
+                parents[i] = population[maxIndividual];                
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace InvestmentStrategies
     {
         static void Main(string[] args)
         {
-            BOA.BOA boa = new InvestmentStrategies.BOA.BOA(5, 5);
+            BOA.BOA boa = new InvestmentStrategies.BOA.BOA(20, 20);
             boa.BayesianOptimisationAlgorithm();
 
         }
