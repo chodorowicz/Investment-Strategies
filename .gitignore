@@ -4,3 +4,6 @@
 /InvestmentStrategies/TestResults
 /InvestmentStrategies/InvestmentStrategiesTests/bin
 /InvestmentStrategies/InvestmentStrategiesTests/obj
+*.suo
+*.orig
+/InvestmentStrategies/LocalTestRun.testrunconfig
