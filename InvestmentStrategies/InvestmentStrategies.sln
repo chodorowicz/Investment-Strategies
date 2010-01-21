@@ -5,12 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvestmentStrategies", "Inv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvestmentStrategiesTests", "InvestmentStrategiesTests\InvestmentStrategiesTests.csproj", "{38F0A342-6B51-47A1-A8F4-88E3A690116F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8257696C-3C9F-40C0-AB5D-B50DFA037329}"
-	ProjectSection(SolutionItems) = preProject
-		InvestmentStrategies.vsmdi = InvestmentStrategies.vsmdi
-		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = InvestmentStrategies.vsmdi
