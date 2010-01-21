@@ -7,3 +7,4 @@
 *.suo
 *.orig
 /InvestmentStrategies/LocalTestRun.testrunconfig
+InvestmentStrategies.vsmdi
