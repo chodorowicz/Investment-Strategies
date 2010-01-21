@@ -9,8 +9,14 @@ namespace InvestmentStrategies
     {
         static void Main(string[] args)
         {
+            
+            Indicators indicators = new Indicators();
+            indicators.readData("../../data-stock/BZWBK.txt");
+            //indicators.testReadData(1);
+            //RSI rsi = new RSI(indicators, 30);
             BOA.BOA boa = new InvestmentStrategies.BOA.BOA(20, 20);
             boa.BayesianOptimisationAlgorithm();
+
 
         }
     }
