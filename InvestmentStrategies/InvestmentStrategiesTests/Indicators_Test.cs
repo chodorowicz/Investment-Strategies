@@ -27,6 +27,7 @@ namespace InvestmentStrategiesTests
         [TestMethod]
         public void indRSI_Test()
         {
+
             // czy dobrze liczy średnią wzrostów i spadków dla początkowego okresu
             Assert.AreEqual(2.0 / daysCount, rsii.avgGains[29], delta);
             Assert.AreEqual(1.0 / daysCount, rsii.avgLosses[29], delta);
