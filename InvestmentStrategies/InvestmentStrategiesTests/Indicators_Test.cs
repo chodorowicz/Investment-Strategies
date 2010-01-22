@@ -1,47 +1,52 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using InvestmentStrategies;
 
 namespace InvestmentStrategiesTests
 {
+    /// <summary>
+    /// Summary description for Indicators_Test
+    /// </summary>
     [TestClass]
     public class Indicators_Test
     {
-        private static readonly string pathToTestData = "../../../InvestmentStrategiesTests/data-test/data-test.txt";
-        private static readonly double delta = 0.001;
-        private Indicators indicators;
-        private RSI rsii;
-        private int daysCount;
-
         public Indicators_Test()
         {
-            this.daysCount = 30;
-            this.indicators = new InvestmentStrategies.Indicators();
-            this.indicators.readData(pathToTestData);
-            this.rsii = new RSI(indicators, daysCount);
+            //
+            // TODO: Add constructor logic here
+            //
         }
 
+        #region Additional test attributes
+        //
+        // You can use the following additional attributes as you write your tests:
+        //
+        // Use ClassInitialize to run code before running the first test in the class
+        // [ClassInitialize()]
+        // public static void MyClassInitialize(TestContext testContext) { }
+        //
+        // Use ClassCleanup to run code after all tests in a class have run
+        // [ClassCleanup()]
+        // public static void MyClassCleanup() { }
+        //
+        // Use TestInitialize to run code before running each test 
+        // [TestInitialize()]
+        // public void MyTestInitialize() { }
+        //
+        // Use TestCleanup to run code after each test has run
+        // [TestCleanup()]
+        // public void MyTestCleanup() { }
+        //
+        #endregion
+
         [TestMethod]
-        public void indRSI_Test()
+        public void TestMethod1()
         {
-
-            // czy dobrze liczy średnią wzrostów i spadków dla początkowego okresu
-            Assert.AreEqual(2.0 / daysCount, rsii.avgGains[29], delta);
-            Assert.AreEqual(1.0 / daysCount, rsii.avgLosses[29], delta);
-
-            //kolejny dzień, bez wzrostu i spadku
-            Assert.AreEqual( (rsii.avgGains[29] * 29 + 0) / 30, rsii.avgGains[30], delta);
-            Assert.AreEqual( (rsii.avgLosses[29] * 29 + 0) / 30, rsii.avgLosses[30], delta);
-
-            // następny dzień, wzrost o 1
-            Assert.AreEqual( (rsii.avgGains[30] * 29 + 1) / 30, rsii.avgGains[31], delta);
-            Assert.AreEqual( (rsii.avgLosses[30] * 29 + 0) / 30, rsii.avgLosses[31], delta);
-
-            // liczenie RSI
-            Assert.AreEqual(100 - (100 / (1 + rsii.avgGains[30] / rsii.avgLosses[30])), rsii.data[30], delta);
+            //
+            // TODO: Add test logic	here
+            //
         }
     }
 }

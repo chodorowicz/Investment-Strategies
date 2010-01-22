@@ -5,17 +5,16 @@ using System.Text;
 
 namespace InvestmentStrategies
 {
-    public class RSI
+    public class RSI : AbstractIndicator, IIndicator
     {
         public double[] avgGains;
         public double[] avgLosses;
-        public double[] data;
         public Indicators indicators;
         public int daysCount;
 
         public RSI(Indicators indicators, int daysCount)
         {
-            this.daysCount  = daysCount;
+            this.daysCount = daysCount;
             this.indicators = indicators;
             this.avgGains = new double[this.indicators.stockData.Count];
             this.avgLosses = new double[this.indicators.stockData.Count];
@@ -24,12 +23,18 @@ namespace InvestmentStrategies
             this.calculate();
         }
 
+        public double decide(int day)
+        {
+            if (data[day] > 70) return -1.0; // overbought, sell!
+            else return 1.0;                 // oversold, buy!               
+        }
+
         private void calculate()
         {
             double valueChange;
             double totalGain = 0;
             double totalLoss = 0;
-            int    currentDay = 1;
+            int currentDay = 1;
 
             for (int i = 1; i < daysCount; i++) // calculate for days 1 to daysCount
             {
@@ -47,9 +52,9 @@ namespace InvestmentStrategies
                 currentDay = i;
             }
 
-            
-            //avgGains[currentDay] = totalGain / daysCount;
-            //avgLosses[currentDay] = totalLoss / daysCount;
+
+            avgGains[currentDay] = totalGain / daysCount;
+            avgLosses[currentDay] = totalLoss / daysCount;
             Console.WriteLine("{0} / {1}", totalGain, currentDay);
             Console.WriteLine("Gains {0}", avgGains[currentDay]);
             Console.WriteLine("Loses {0}", avgLosses[currentDay]);

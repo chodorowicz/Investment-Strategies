@@ -6,10 +6,31 @@ using System.Collections.Generic;
 
 namespace InvestmentStrategies
 {
+    public interface IIndicator
+    {
+        double decide(int day);
+    }
+
+    public abstract class AbstractIndicator
+    {
+        public double[] data;
+        
+
+        public void printData()
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                Console.WriteLine(data[i]);
+            }
+        }
+    }
+
+
     public class Indicators
     {
         public List<Dictionary<string, double>> stockData;
-        public List<Dictionary<string, List<double>>> ind;
+        public List<Dictionary<string, List<double>>> ind__;
+        public List<IIndicator> ind;
 
         public void readData(string path)
         {
@@ -43,6 +64,15 @@ namespace InvestmentStrategies
  
             this.stockData = results;
         }
+
+        public void calculateIndicators()
+        {
+            ind = new List<IIndicator>();
+            ind.Add(new RSI(this, 30));
+        }
+
+
+
 
         public double valueChange_Close(int day)
         {
