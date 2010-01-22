@@ -30,7 +30,7 @@ namespace InvestmentStrategies
     {
         public List<Dictionary<string, double>> stockData;
         public List<Dictionary<string, List<double>>> ind__;
-        public List<IIndicator> ind;
+        public List<IIndicator> indicators;
 
         public void readData(string path)
         {
@@ -67,8 +67,8 @@ namespace InvestmentStrategies
 
         public void calculateIndicators()
         {
-            ind = new List<IIndicator>();
-            ind.Add(new RSI(this, 30));
+            indicators = new List<IIndicator>();
+            indicators.Add(new RSI(this, 30));
         }
 
 
