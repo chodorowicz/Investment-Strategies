@@ -19,13 +19,13 @@ namespace InvestmentStrategiesTests
         public RSI_Test()
         {
             this.daysCount = 30;
-            this.indicators = new InvestmentStrategies.Indicators();
+            this.indicators = new Indicators();
             this.indicators.readData(pathToTestData);
             this.rsii = new RSI(indicators, daysCount);
         }
 
         [TestMethod]
-        public void indRSI_Test_General()
+        public void RSI_Test_General()
         {
             // czy dobrze liczy średnią wzrostów i spadków dla początkowego okresu
             Assert.AreEqual(2.0 / daysCount, rsii.avgGains[29], delta);

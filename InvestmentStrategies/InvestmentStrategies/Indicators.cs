@@ -19,6 +19,10 @@ namespace InvestmentStrategies
         {
             for (int i = 0; i < data.Length; i++) Console.WriteLine(data[i]);
         }
+        public void print(double[] dataToPrint)
+        {
+            for (int i = 0; i < dataToPrint.Length; i++) Console.WriteLine(dataToPrint[i]);
+        }
     }
 
 

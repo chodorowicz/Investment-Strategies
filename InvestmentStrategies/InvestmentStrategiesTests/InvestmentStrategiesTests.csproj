@@ -43,6 +43,7 @@
     <Compile Include="Indicators_Test.cs" />
     <Compile Include="RSI_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StochasticOscillator_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
