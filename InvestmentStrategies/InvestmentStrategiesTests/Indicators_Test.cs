@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using InvestmentStrategies;
 
 namespace InvestmentStrategiesTests
 {
@@ -12,41 +13,25 @@ namespace InvestmentStrategiesTests
     [TestClass]
     public class Indicators_Test
     {
+        private static readonly string pathToTestData = "../../../InvestmentStrategiesTests/data-test/data-test.txt";
+        private static readonly double delta = 0.001;
+        private Indicators indicators;
+        private RSI rsii;
+        private int daysCount;
+
         public Indicators_Test()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            this.daysCount = 30;
+            this.indicators = new InvestmentStrategies.Indicators();
+            this.indicators.readData(pathToTestData);
+            this.rsii = new RSI(indicators, daysCount);
         }
 
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void Indicators_General()
         {
-            //
-            // TODO: Add test logic	here
-            //
+      
         }
     }
 }

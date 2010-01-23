@@ -15,13 +15,9 @@ namespace InvestmentStrategies
     {
         public double[] data;
         
-
         public void printData()
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                Console.WriteLine(data[i]);
-            }
+            for (int i = 0; i < data.Length; i++) Console.WriteLine(data[i]);
         }
     }
 
@@ -63,6 +59,7 @@ namespace InvestmentStrategies
             }
  
             this.stockData = results;
+            this.calculateIndicators();
         }
 
         public void calculateIndicators()

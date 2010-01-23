@@ -41,6 +41,8 @@ namespace InvestmentStrategiesTests
 
             // liczenie RSI dla dnia 30
             Assert.AreEqual(100 - (100 / (1 + rsii.avgGains[30] / rsii.avgLosses[30])), rsii.data[30], delta);
+
+            rsii.printData();
         }
     }
 }
