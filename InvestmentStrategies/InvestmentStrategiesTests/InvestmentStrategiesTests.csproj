@@ -45,6 +45,7 @@
     <Compile Include="Indicators_Tests\lib\EMA_Test.cs" />
     <Compile Include="Indicators_Tests\lib\SMA_Test.cs" />
     <Compile Include="Indicators_Test.cs" />
+    <Compile Include="Indicators_Tests\MFI_Test.cs" />
     <Compile Include="Indicators_Tests\Trix_Test.cs" />
     <Compile Include="RSI_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
