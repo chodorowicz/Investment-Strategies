@@ -15,6 +15,27 @@ namespace InvestmentStrategies
     {
         public double[] data;
         
+        public static double sumArray(double[] dataArray, int begin, int end)
+        {
+            double sum = 0;
+            for (int i = begin; i <= end; i++) { sum += dataArray[i]; }
+            return sum;
+        }
+
+        // http://en.wikipedia.org/wiki/Mean_absolute_deviation
+        public static double meanAbsoluteDeviation(double[] dataArray, int n, int offset, double centralTendency)
+        {
+            double sum = 0;
+            for (int i = offset - n + 1; i <= offset; i++)
+            {
+                sum += Math.Abs(centralTendency - dataArray[i]);
+            }
+            sum /= n;
+            return sum;
+        }
+
+
+
         public void printData()
         {
             for (int i = 0; i < data.Length; i++) Console.WriteLine(data[i]);
@@ -71,7 +92,6 @@ namespace InvestmentStrategies
             indicators = new List<IIndicator>();
             indicators.Add(new RSI(this, 30));
         }
-
 
 
 

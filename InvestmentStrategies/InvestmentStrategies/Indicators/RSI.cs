@@ -25,8 +25,9 @@ namespace InvestmentStrategies
 
         public double decide(int day)
         {
-            if (data[day] > 70) return -1.0; // overbought, sell!
-            else return 1.0;                 // oversold, buy!               
+            if (data[day] > 70) return -1.0;      // overbought, sell!
+            else if (data[day] < 30) return 1.0;  // oversold, buy!    
+            else return 0.0;                      // no decision      
         }
 
         private void calculate()

@@ -19,7 +19,8 @@ namespace InvestmentStrategies
 
             Indicators indicators = new Indicators();
             indicators.readData("../../data-stock/BZWBK.txt");
-            StochasticOscillator SO = new StochasticOscillator(indicators, 30, 3);
+            //StochasticOscillator SO = new StochasticOscillator(indicators, 30, 3);
+            CommodityChannelIndex CCI = new CommodityChannelIndex(indicators, 30);
 
         }
     }

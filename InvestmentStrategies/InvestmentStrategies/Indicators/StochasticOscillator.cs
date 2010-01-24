@@ -25,8 +25,9 @@ namespace InvestmentStrategies
 
         public double decide(int day)
         {
-            if (averageData[day] > 80) return -1.0; // sell
-            else return 1.0;                
+            if (averageData[day] > 80)       return -1.0; // sell
+            else if (averageData[day] < 20)  return  1.0; // buy
+            else                             return  1.0; // no decision              
 
         }
 
