@@ -49,6 +49,7 @@
     <Compile Include="BOA\BOA.cs" />
     <Compile Include="BOA\Randoms.cs" />
     <Compile Include="Indicators_classes\CommodityChannelIndex.cs" />
+    <Compile Include="Indicators_classes\Force.cs" />
     <Compile Include="Indicators_classes\lib\EMA.cs" />
     <Compile Include="Indicators_classes\lib\SMA.cs" />
     <Compile Include="Indicators_classes\RSI.cs" />

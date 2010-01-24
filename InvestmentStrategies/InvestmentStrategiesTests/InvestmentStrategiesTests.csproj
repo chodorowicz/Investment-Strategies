@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommodityChannelIndex_Test.cs" />
+    <Compile Include="Indicators_Tests\Force_Test.cs" />
     <Compile Include="Indicators_Tests\lib\EMA_Test.cs" />
     <Compile Include="Indicators_Tests\lib\SMA_Test.cs" />
     <Compile Include="Indicators_Test.cs" />

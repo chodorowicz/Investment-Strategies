@@ -20,5 +20,17 @@ namespace InvestmentStrategies
             }
             return EMA;
         }
+        public static double[] calculate(double[] data, double[] SMA, int period)
+        {
+            double[] EMA = new double[data.Count()];
+            double percentage = (2.0 / (period + 1.0));
+            EMA[period - 1] = SMA[period - 1]; // take SMA as for the first EMA value
+
+            for (int i = period; i < data.Count(); i++)
+            {
+                EMA[i] = ((data[i] - EMA[i - 1]) * percentage) + EMA[i - 1];
+            }
+            return EMA;
+        }
     }
 }

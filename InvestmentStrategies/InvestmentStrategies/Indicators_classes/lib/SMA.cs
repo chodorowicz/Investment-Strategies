@@ -25,5 +25,24 @@ namespace InvestmentStrategies
 
             return SMAData;
         }
+
+        public static double[] calculate(double[] data, int period)
+        {
+            double[] SMAData = new double[data.Count()];
+
+            for (int i = 0; i < period; i++)
+            {
+                SMAData[period - 1] += data[i];
+            }
+            SMAData[period - 1] /= period;
+
+            for (int i = period; i < data.Count(); i++)
+            {
+                SMAData[i] = SMAData[i - 1] - (data[i - period] / period)
+                    + (data[i] / period);
+            }
+
+            return SMAData;
+        }
     }
 }

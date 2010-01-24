@@ -5,16 +5,18 @@ using System.Text;
 
 namespace InvestmentStrategies
 {
-    public class TRIX : AbstractIndicator, IIndicator
+    public class Force : AbstractIndicator, IIndicator
     {
         public Indicators indicators;
         public int period;
+        public double[] simpleForce;
 
-        public TRIX(Indicators indicators, int period)
+        public Force(Indicators indicators, int period)
         {
             this.period = period;
             this.indicators = indicators;
             this.data = new double[this.indicators.stockData.Count];
+            this.simpleForce = new double[this.indicators.stockData.Count];
 
             this.calculate();
         }
@@ -26,12 +28,16 @@ namespace InvestmentStrategies
             else return 0.0;             // no decision  
         }
 
-        private void calculate() 
+        private void calculate()
         {
-            double[] sMA = SMA.calculate(indicators.stockData, period);
-            data = EMA.calculate(indicators.stockData, sMA, period);
-            data = EMA.calculate(indicators.stockData, data, period);
-            data = EMA.calculate(indicators.stockData, data, period);
+            for (int i = 1; i < indicators.stockData.Count(); i++)
+            {
+                simpleForce[i] = (indicators.stockData[i]["close"] - indicators.stockData[i-1]["close"])
+                    * indicators.stockData[i]["volume"];
+            }
+            double[] sma = SMA.calculate(simpleForce, period);
+            data = EMA.calculate(simpleForce, sma, period);
         }
+
     }
 }
