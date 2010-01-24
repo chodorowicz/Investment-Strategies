@@ -15,7 +15,7 @@ namespace InvestmentStrategiesTests
     {
         private static readonly string pathToTestData = "../../../InvestmentStrategiesTests/data-test/data-test.txt";
         private static readonly double delta = 0.001;
-        private Indicators indicators;
+        private InvestmentStrategies.Indicators indicators;
         private StochasticOscillator SO;
         private int period;
         private int movingAveragePeriod;
@@ -24,7 +24,7 @@ namespace InvestmentStrategiesTests
         {
             this.period = 30;
             this.movingAveragePeriod = 3;
-            this.indicators = new Indicators();
+            this.indicators = new InvestmentStrategies.Indicators();
             this.indicators.readData(pathToTestData);
             this.SO = new StochasticOscillator(indicators, period, movingAveragePeriod);
         }

@@ -16,11 +16,11 @@ namespace InvestmentStrategiesTests
     {
         private static readonly string pathToTestData = "../../../InvestmentStrategiesTests/data-test/EMA.txt";
         private static readonly double delta = 0.001;
-        private Indicators indicators;
+        private InvestmentStrategies.Indicators indicators;
 
         public EMA_Test()
         {
-            indicators = new Indicators();
+            indicators = new InvestmentStrategies.Indicators();
             this.indicators.readData(pathToTestData);
 
         }

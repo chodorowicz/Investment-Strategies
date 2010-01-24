@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommodityChannelIndex_Test.cs" />
-    <Compile Include="Indicators\lib\EMA_Test.cs" />
+    <Compile Include="Indicators_Tests\lib\EMA_Test.cs" />
+    <Compile Include="Indicators_Tests\lib\SMA_Test.cs" />
     <Compile Include="Indicators_Test.cs" />
+    <Compile Include="Indicators_Tests\Trix_Test.cs" />
     <Compile Include="RSI_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StochasticOscillator_Test.cs" />
@@ -51,6 +53,7 @@
     <Content Include="AuthoringTests.txt" />
     <Content Include="data-test\data-test.txt" />
     <Content Include="data-test\EMA.txt" />
+    <Content Include="data-test\SMA.txt" />
     <Content Include="data-test\testDataCCI.txt" />
   </ItemGroup>
   <ItemGroup>

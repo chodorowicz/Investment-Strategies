@@ -48,10 +48,12 @@
     <Compile Include="BOA\BayesianNetwork.cs" />
     <Compile Include="BOA\BOA.cs" />
     <Compile Include="BOA\Randoms.cs" />
-    <Compile Include="Indicators\CommodityChannelIndex.cs" />
-    <Compile Include="Indicators\lib\EMA.cs" />
-    <Compile Include="Indicators\RSI.cs" />
-    <Compile Include="Indicators\StochasticOscillator.cs" />
+    <Compile Include="Indicators_classes\CommodityChannelIndex.cs" />
+    <Compile Include="Indicators_classes\lib\EMA.cs" />
+    <Compile Include="Indicators_classes\lib\SMA.cs" />
+    <Compile Include="Indicators_classes\RSI.cs" />
+    <Compile Include="Indicators_classes\StochasticOscillator.cs" />
+    <Compile Include="Indicators_classes\TRIX.cs" />
     <Compile Include="ObjectiveFunction.cs" />
     <Compile Include="Population.cs" />
     <Compile Include="CGA.cs" />

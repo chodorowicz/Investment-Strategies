@@ -12,14 +12,14 @@ namespace InvestmentStrategiesTests
     {
         private static readonly string pathToTestData = "../../../InvestmentStrategiesTests/data-test/data-test.txt";
         private static readonly double delta = 0.001;
-        private Indicators indicators;
+        private InvestmentStrategies.Indicators indicators;
         private RSI rsii;
         private int daysCount;
 
         public RSI_Test()
         {
             this.daysCount = 30;
-            this.indicators = new Indicators();
+            this.indicators = new InvestmentStrategies.Indicators();
             this.indicators.readData(pathToTestData);
             this.rsii = new RSI(indicators, daysCount);
         }
