@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommodityChannelIndex_Test.cs" />
+    <Compile Include="Indicators\lib\EMA_Test.cs" />
     <Compile Include="Indicators_Test.cs" />
     <Compile Include="RSI_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,6 +50,7 @@
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
     <Content Include="data-test\data-test.txt" />
+    <Content Include="data-test\EMA.txt" />
     <Content Include="data-test\testDataCCI.txt" />
   </ItemGroup>
   <ItemGroup>

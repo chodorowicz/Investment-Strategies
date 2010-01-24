@@ -56,12 +56,12 @@ namespace InvestmentStrategies
 
             avgGains[currentDay] = totalGain / daysCount;
             avgLosses[currentDay] = totalLoss / daysCount;
-            Console.WriteLine("{0} / {1}", totalGain, currentDay);
-            Console.WriteLine("Gains {0}", avgGains[currentDay]);
-            Console.WriteLine("Loses {0}", avgLosses[currentDay]);
+            //Console.WriteLine("{0} / {1}", totalGain, currentDay);
+            //Console.WriteLine("Gains {0}", avgGains[currentDay]);
+            //Console.WriteLine("Loses {0}", avgLosses[currentDay]);
 
             double RS;
-            Console.WriteLine(indicators.stockData.Count);
+            //Console.WriteLine(indicators.stockData.Count);
             for (int i = currentDay + 1; i < indicators.stockData.Count; i++)
             {
                 valueChange = indicators.valueChange_Close(i);

@@ -49,6 +49,7 @@
     <Compile Include="BOA\BOA.cs" />
     <Compile Include="BOA\Randoms.cs" />
     <Compile Include="Indicators\CommodityChannelIndex.cs" />
+    <Compile Include="Indicators\lib\EMA.cs" />
     <Compile Include="Indicators\RSI.cs" />
     <Compile Include="Indicators\StochasticOscillator.cs" />
     <Compile Include="ObjectiveFunction.cs" />
