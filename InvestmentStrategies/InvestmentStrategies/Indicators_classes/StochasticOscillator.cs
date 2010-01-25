@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InvestmentStrategies
 {
-    public class StochasticOscillator : AbstractIndicator, IIndicator
+    public class StochasticOscillator : AbstractIndicator
     {
         public Indicators indicators;
         public int period;
@@ -23,7 +23,7 @@ namespace InvestmentStrategies
             this.calculate();
         }
 
-        public double decide(int day)
+        public override double decide(int day)
         {
             if (averageData[day] > 80)       return -1.0; // sell
             else if (averageData[day] < 20)  return  1.0; // buy

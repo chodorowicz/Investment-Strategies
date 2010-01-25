@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InvestmentStrategies
 {
-    public class CommodityChannelIndex : AbstractIndicator, IIndicator
+    public class CommodityChannelIndex : AbstractIndicator
     {
         public Indicators indicators;
         public int period;
@@ -28,7 +28,7 @@ namespace InvestmentStrategies
         }
 
 
-        public double decide(int day)
+        public override double decide(int day)
         {
             if (data[day] > 100) return 1.0;        // buy
             else if (data[day] < -100) return -1.0; // sell 

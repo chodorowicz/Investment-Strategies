@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InvestmentStrategies
 {
-    public class RSI : AbstractIndicator, IIndicator
+    public class RSI : AbstractIndicator
     {
         public double[] avgGains;
         public double[] avgLosses;
@@ -23,7 +23,7 @@ namespace InvestmentStrategies
             this.calculate();
         }
 
-        public double decide(int day)
+        public override double decide(int day)
         {
             if (data[day] > 70) return -1.0;      // overbought, sell!
             else if (data[day] < 30) return 1.0;  // oversold, buy!    

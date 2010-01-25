@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InvestmentStrategies
 {
-    public class TRIX : AbstractIndicator, IIndicator
+    public class TRIX : AbstractIndicator
     {
         public Indicators indicators;
         public int period;
@@ -19,7 +19,7 @@ namespace InvestmentStrategies
             this.calculate();
         }
 
-        public double decide(int day)
+        public override double decide(int day)
         {
             if (data[day] > 0 && data[day - 1] < 0) return 1.0;        // buy
             else if (data[day] < 0 && data[day - 1] > 0) return 0.0;   // sell 

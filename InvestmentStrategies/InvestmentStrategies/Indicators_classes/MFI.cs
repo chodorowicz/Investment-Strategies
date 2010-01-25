@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InvestmentStrategies
 {
-    public class MFI : AbstractIndicator, IIndicator
+    public class MFI : AbstractIndicator
     {
         public Indicators indicators;
         public int period;
@@ -28,7 +28,7 @@ namespace InvestmentStrategies
             this.calculate();
         }
 
-        public double decide(int day)
+        public override double decide(int day)
         {
             if (data[day] > 80) return -1.0;      // overbought, sell!
             else if (data[day] < 20) return 1.0;  // oversold, buy!    

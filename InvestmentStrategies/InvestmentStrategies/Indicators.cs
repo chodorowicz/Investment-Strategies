@@ -6,14 +6,10 @@ using System.Collections.Generic;
 
 namespace InvestmentStrategies
 {
-    public interface IIndicator
-    {
-        double decide(int day);
-    }
-
     public abstract class AbstractIndicator
     {
         public double[] data;
+        public abstract double decide(int day);
         
         public static double sumArray(double[] dataArray, int begin, int end)
         {
@@ -36,10 +32,18 @@ namespace InvestmentStrategies
 
 
 
+        public void printDecisions(int startDay) {
+            for (int i = startDay; i < data.Length; i++)
+            {
+                Console.WriteLine(this.decide(i));
+            }
+        }
+
         public void printData()
         {
             for (int i = 0; i < data.Length; i++) Console.WriteLine(data[i]);
         }
+
         public void print(double[] dataToPrint)
         {
             for (int i = 0; i < dataToPrint.Length; i++) Console.WriteLine(dataToPrint[i]);
@@ -51,7 +55,7 @@ namespace InvestmentStrategies
     {
         public List<Dictionary<string, double>> stockData;
         public List<Dictionary<string, List<double>>> ind__;
-        public List<IIndicator> indicators;
+        public List<AbstractIndicator> indicators;
 
         public void readData(string path)
         {
@@ -89,8 +93,42 @@ namespace InvestmentStrategies
 
         public void calculateIndicators()
         {
-            indicators = new List<IIndicator>();
-            indicators.Add(new RSI(this, 30));
+            indicators = new List<AbstractIndicator>();
+
+            for( int i = 10; i <= 30; i++)
+            {
+                indicators.Add(new RSI(this, i));
+            }
+
+            for (int i = 10; i <= 30; i++)
+            {
+                indicators.Add(new StochasticOscillator(this, i, 3));
+                indicators.Add(new StochasticOscillator(this, i, 5));
+                indicators.Add(new StochasticOscillator(this, i, 7));
+            }
+
+            for (int i = 10; i <= 30; i++)
+            {
+                indicators.Add(new CommodityChannelIndex(this, i));
+            }
+
+            for (int i = 10; i <= 30; i++)
+            {
+                indicators.Add(new TRIX(this, i));
+            }
+
+            for (int i = 10; i <= 30; i++)
+            {
+                indicators.Add(new Force(this, i));
+            }
+
+            for (int i = 10; i <= 30; i++)
+            {
+                indicators.Add(new MFI(this, i));
+            }
+
+
+            Console.WriteLine(indicators.Count);
         }
 
 
