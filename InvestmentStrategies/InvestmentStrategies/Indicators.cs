@@ -18,6 +18,27 @@ namespace InvestmentStrategies
             return sum;
         }
 
+        public static double highestHigh(int period, int offset, List<Dictionary<string, double>> stockData)
+        {
+            double result = stockData[offset-period + 1]["high"];
+            for (int j = offset - period + 2; j <= offset; j++)
+            {
+                if (stockData[j]["high"] > result)
+                    result = stockData[j]["high"];
+            }
+            return result;
+        }
+        public static double lowestLow(int period, int offset, List<Dictionary<string, double>> stockData)
+        {
+            double result = stockData[offset - period + 1]["low"];
+            for (int j = offset - period + 2; j <= offset; j++)
+            {
+                if (stockData[j]["low"] < result)
+                    result = stockData[j]["low"];
+            }
+            return result;
+        }
+
         // http://en.wikipedia.org/wiki/Mean_absolute_deviation
         public static double meanAbsoluteDeviation(double[] dataArray, int n, int offset, double centralTendency)
         {
@@ -125,6 +146,12 @@ namespace InvestmentStrategies
             for (int i = 10; i <= 30; i++)
             {
                 indicators.Add(new MFI(this, i));
+            }
+            for (int i = 10; i <= 30; i++)
+            {
+                indicators.Add(new Williams(this, i, 3));
+                indicators.Add(new StochasticOscillator(this, i, 5));
+                indicators.Add(new StochasticOscillator(this, i, 7));
             }
 
 

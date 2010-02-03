@@ -38,20 +38,22 @@ namespace InvestmentStrategies
             for (int i = period-1; i < indicators.stockData.Count; i++)
             {
                 recentClose = indicators.stockData[i]["close"];
-                lowestLow = indicators.stockData[i - period + 1]["low"];
-                highestHigh = indicators.stockData[i - period + 1]["high"];
+                //lowestLow = indicators.stockData[i - period + 1]["low"];
+                //highestHigh = indicators.stockData[i - period + 1]["high"];
 
-                for (int j = i - period + 2; j <= i; j++)
-                {
-                    if (indicators.stockData[j]["low"] < lowestLow)
-                        lowestLow = indicators.stockData[j]["low"];
-                }
+                //for (int j = i - period + 2; j <= i; j++)
+                //{
+                //    if (indicators.stockData[j]["low"] < lowestLow)
+                //        lowestLow = indicators.stockData[j]["low"];
+                //}
 
-                for (int j = i - period + 2; j <= i; j++)
-                {
-                    if (indicators.stockData[j]["high"] > highestHigh)
-                        highestHigh = indicators.stockData[j]["high"];
-                }
+                //for (int j = i - period + 2; j <= i; j++)
+                //{
+                //    if (indicators.stockData[j]["high"] > highestHigh)
+                //        highestHigh = indicators.stockData[j]["high"];
+                //}
+                lowestLow = AbstractIndicator.lowestLow(period, i, indicators.stockData);
+                highestHigh = AbstractIndicator.highestHigh(period, i, indicators.stockData);
 
                 if ((highestHigh - lowestLow) == 0.0) data[i] = 100;
                 else data[i] = 100 * ((recentClose - lowestLow) / (highestHigh - lowestLow));

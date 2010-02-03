@@ -56,6 +56,7 @@
     <Compile Include="Indicators_classes\RSI.cs" />
     <Compile Include="Indicators_classes\StochasticOscillator.cs" />
     <Compile Include="Indicators_classes\TRIX.cs" />
+    <Compile Include="Indicators_classes\Williams.cs" />
     <Compile Include="ObjectiveFunction.cs" />
     <Compile Include="Population.cs" />
     <Compile Include="CGA.cs" />

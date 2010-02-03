@@ -22,7 +22,7 @@ namespace InvestmentStrategies
         public override double decide(int day)
         {
             if (data[day] > 0 && data[day - 1] < 0) return 1.0;        // buy
-            else if (data[day] < 0 && data[day - 1] > 0) return 0.0;   // sell 
+            else if (data[day] < 0 && data[day - 1] > 0) return -1.0;   // sell 
             else return 0.0;             // no decision  
         }
 
