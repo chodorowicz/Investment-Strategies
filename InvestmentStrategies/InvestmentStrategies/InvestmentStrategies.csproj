@@ -48,11 +48,14 @@
     <Compile Include="BOA\BayesianNetwork.cs" />
     <Compile Include="BOA\BOA.cs" />
     <Compile Include="BOA\Randoms.cs" />
+    <Compile Include="Indicators_classes\ATR.cs" />
     <Compile Include="Indicators_classes\CommodityChannelIndex.cs" />
     <Compile Include="Indicators_classes\Force.cs" />
     <Compile Include="Indicators_classes\lib\EMA.cs" />
     <Compile Include="Indicators_classes\lib\SMA.cs" />
+    <Compile Include="Indicators_classes\MACD.cs" />
     <Compile Include="Indicators_classes\MFI.cs" />
+    <Compile Include="Indicators_classes\ROC.cs" />
     <Compile Include="Indicators_classes\RSI.cs" />
     <Compile Include="Indicators_classes\StochasticOscillator.cs" />
     <Compile Include="Indicators_classes\TRIX.cs" />

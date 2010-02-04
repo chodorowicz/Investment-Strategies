@@ -154,6 +154,11 @@ namespace InvestmentStrategies
                 indicators.Add(new StochasticOscillator(this, i, 7));
             }
 
+            for (int i = 10; i <= 30; i++)
+            {
+                indicators.Add(new ATR(this, i));
+            }
+
 
             Console.WriteLine(indicators.Count);
         }
